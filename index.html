@@ -22,14 +22,8 @@
   }
 
   /* --- Flores cayendo --- */
-  .flores{
-    position:fixed; inset:0; z-index:-1; pointer-events:none;
-    overflow:hidden;
-  }
-  .flor{
-    position:absolute; top:-10%; font-size:24px;
-    animation: caer linear infinite;
-  }
+  .flores{ position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
+  .flor{ position:absolute; top:-10%; font-size:24px; animation: caer linear infinite; }
   @keyframes caer{
     0%{ transform:translateY(-10%) rotate(0deg); opacity:1; }
     100%{ transform:translateY(110vh) rotate(360deg); opacity:0.7; }
@@ -38,58 +32,38 @@
   /* --- Tarjeta central --- */
   .tarjeta{
     max-width:900px; margin:3rem auto; background:#fffdfade;
-    border:1px solid rgba(246,201,14,.25);
-    border-radius:24px; padding:2rem;
+    border:1px solid rgba(246,201,14,.25); border-radius:24px; padding:2rem;
     box-shadow:var(--sombra); text-align:center;
   }
 
   h1{
     font-family:"Great Vibes", cursive; font-size:3.5rem;
     background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size:200% auto;
-    animation: brillo 3s linear infinite;
-    margin:0;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-size:200% auto; animation: brillo 3s linear infinite; margin:0;
   }
-  @keyframes brillo{
-    0%{background-position:0% center;}
-    50%{background-position:100% center;}
-    100%{background-position:0% center;}
-  }
+  @keyframes brillo{ 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
 
   .sub{color:#6b5b00; margin-top:.5rem;}
-  .mensaje{
-    margin:2rem 0; font-size:1.2rem; line-height:1.7;
-    min-height:150px; transition: opacity .6s ease;
-  }
+  .mensaje{ margin:2rem 0; font-size:1.2rem; line-height:1.7; min-height:150px; transition: opacity .6s ease; }
   .mensaje.oculto{opacity:0;}
   .firma{font-family:"Great Vibes", cursive; font-size:2rem; color:#4b3e00;}
 
   /* --- Botones --- */
-  .botones{
-    margin-top:2rem; display:flex; flex-wrap:wrap; 
-    gap:1.5rem; justify-content:center;
-  }
+  .botones{ margin-top:2rem; display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; }
   .boton{
     padding:1rem 1.4rem; border-radius:999px;
     background:linear-gradient(135deg,var(--amarillo),var(--amarillo-2));
     color:#332b00; font-weight:700; text-decoration:none;
     box-shadow:0 6px 12px rgba(246,201,14,.35);
     transition:transform .25s ease, box-shadow .25s ease;
-    cursor:pointer;
-    animation: flotando 3s ease-in-out infinite;
+    cursor:pointer; animation: flotando 3s ease-in-out infinite;
   }
-  .boton:hover{
-    transform:translateY(-4px) scale(1.05);
-    box-shadow:0 12px 25px rgba(246,201,14,.5);
-  }
-  @keyframes flotando{
-    0%,100%{ transform: translateY(0); }
-    50%{ transform: translateY(-5px); }
-  }
+  .boton:hover{ transform:translateY(-4px) scale(1.05); box-shadow:0 12px 25px rgba(246,201,14,.5); }
+  @keyframes flotando{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-5px) } }
 
   footer{text-align:center; margin:2rem 0; color:#7d6f00; font-size:.9rem;}
+  footer small{display:block; margin-top:.25rem; opacity:.9;}
 </style>
 </head>
 <body>
@@ -115,11 +89,26 @@
         <a class="boton" onclick="cambiarMensaje('🌻 Un abrazo lleno de cariño 💫')">🌻 Abrazo</a>
         <a class="boton" onclick="cambiarMensaje('🌼 Siempre deseo lo mejor para ti 🌞')">🌼 Deseo</a>
         <a class="boton" onclick="cambiarMensaje('🐶 Benito te manda saludos 😁')">🐶 Benito</a>
-        <a class="boton" onclick="cambiarMensaje('😏 chupamela, Ups... te dije que no presionaras 🤭')">😏 No Presionar</a>
+        <a class="boton" onclick="cambiarMensaje('😏 Ups... te dije que no presionaras 🤭')">😏 No Presionar</a>
       </div>
     </section>
   </main>
-  <footer>Hecho con cariño por Christian · 2025</footer>
+
+  <footer>
+    Hecho con cariño por Christian · 2025
+    <small>Música: “There is Romance” y “Heartwarming” — Kevin MacLeod (incompetech.com), CC BY 3.0.</small>
+  </footer>
+
+  <!-- Música: varias fuentes (fallback) -->
+  <audio id="musica" loop preload="auto">
+    <!-- Opción 1 -->
+    <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/There%20is%20Romance.mp3" type="audio/mpeg">
+    <!-- Opción 2 -->
+    <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Heartwarming.mp3" type="audio/mpeg">
+    <!-- Opción 3 (respaldo genérico) -->
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio HTML5.
+  </audio>
 
 <script>
   // Generar MUCHOS girasoles cayendo
@@ -136,7 +125,7 @@
     contenedor.appendChild(span);
   }
 
-  // Mensaje principal
+  // Mensaje principal (para restaurar)
   const mensajePrincipal = `
     <p>No siempre hay que decir mucho, a veces un gesto basta.</p>
     <p>Estas flores amarillas son solo un detalle tranquilo, como un pequeño rayo de sol en tu día.</p>
@@ -144,30 +133,36 @@
     <p class="firma">Christian</p>
   `;
 
+  // Iniciar música solo una vez, al primer clic
+  let musicaIniciada = false;
+  function iniciarMusica(){
+    if(!musicaIniciada){
+      const audio = document.getElementById("musica");
+      audio.play().catch(()=>{}); // por si el navegador necesita interacción
+      musicaIniciada = true;
+    }
+  }
+
   // Cambiar mensaje con fade y volver al principal después de 5s
   function cambiarMensaje(texto){
-    const msg=document.getElementById("mensaje");
+    iniciarMusica(); // activa música al primer click
 
-    // Animación fade-out
+    const msg=document.getElementById("mensaje");
     msg.classList.add("oculto");
 
     setTimeout(()=>{
-      // Mostrar mensaje del botón
       msg.innerHTML = `<p>${texto}</p><p class="firma">Christian</p>`;
       msg.classList.remove("oculto");
     },600);
 
-    // Volver al mensaje principal después de 5 segundos
     setTimeout(()=>{
       msg.classList.add("oculto");
       setTimeout(()=>{
         msg.innerHTML = mensajePrincipal;
         msg.classList.remove("oculto");
       },600);
-    },5600); // 600ms del fade inicial + 5000ms visibles
+    },5600);
   }
 </script>
-
-
 </body>
 </html>

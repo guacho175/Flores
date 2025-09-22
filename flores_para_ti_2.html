@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flores Amarillas para Ani</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --amarillo:#F6C90E;
+    --amarillo-2:#FFD84D;
+    --crema:#FFF9E8;
+    --texto:#2b2b2b;
+    --sombra:0 10px 30px rgba(0,0,0,.15);
+  }
+  body{
+    margin:0;
+    font-family:"Plus Jakarta Sans", sans-serif;
+    background:linear-gradient(180deg,#fff,var(--crema));
+    color:var(--texto);
+    overflow-x:hidden;
+  }
+
+  /* --- Flores cayendo --- */
+  .flores{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    overflow:hidden;
+  }
+  .flor{
+    position:absolute; top:-10%; font-size:24px;
+    animation: caer linear infinite;
+  }
+  @keyframes caer{
+    0%{ transform:translateY(-10%) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(110vh) rotate(360deg); opacity:0.7; }
+  }
+
+  /* --- Tarjeta central --- */
+  .tarjeta{
+    max-width:900px; margin:3rem auto; background:#fffdfade;
+    border:1px solid rgba(246,201,14,.25);
+    border-radius:24px; padding:2rem;
+    box-shadow:var(--sombra); text-align:center;
+  }
+  h1{
+    font-family:"Great Vibes", cursive; font-size:3rem;
+    color:#332b00; margin:0;
+  }
+  .sub{color:#6b5b00; margin-top:.5rem;}
+  .mensaje{margin:2rem 0; font-size:1.1rem; line-height:1.6;}
+  .firma{font-family:"Great Vibes", cursive; font-size:2rem; color:#4b3e00;}
+
+  /* --- Botones --- */
+  .botones{margin-top:2rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;}
+  .boton{
+    padding:0.9rem 1.2rem; border-radius:999px;
+    background:linear-gradient(135deg,var(--amarillo),var(--amarillo-2));
+    color:#332b00; font-weight:700; text-decoration:none;
+    box-shadow:0 6px 12px rgba(246,201,14,.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+    cursor:pointer;
+  }
+  .boton:hover{transform:translateY(-2px); box-shadow:0 12px 20px rgba(246,201,14,.45);}
+  footer{text-align:center; margin:2rem 0; color:#7d6f00; font-size:.9rem;}
+</style>
+</head>
+<body>
+  <!-- Flores cayendo -->
+  <div class="flores" id="flores"></div>
+
+  <main>
+    <section class="tarjeta">
+      <h1>Flores Amarillas para ti mi amor</h1>
+      <div class="sub">Un detalle sencillo, pero de corazón 🌼</div>
+    <div class="mensaje">
+      <p>No siempre hay que decir mucho, a veces un gesto basta.</p>
+      <p>Estas flores amarillas son solo un detalle tranquilo, como un pequeño rayo de sol en tu día.</p>
+      <p>Que las disfrutes a tu manera.</p>
+      <p class="firma">Christian</p>
+    </div>
+
+      <div class="botones">
+        <a class="boton" onclick="alert('🌼 Eres única, Ani 💛')">🌼 Para Ani</a>
+        <a class="boton" onclick="alert('🌻 Que tu día brille como estas flores ✨')">🌻 Brillo</a>
+        <a class="boton" onclick="alert('🌼 La vida es más bonita contigo')">🌼 Bonita</a>
+        <a class="boton" onclick="alert('🌻 Un abrazo lleno de cariño 💫')">🌻 Abrazo</a>
+        <a class="boton" onclick="alert('🌼 Siempre deseo lo mejor para ti')">🌼 Deseo</a>
+        <a class="boton" onclick="alert('🐶 Benito te manda saludos 😁')">🐶 Benito</a>
+        <a class="boton" onclick="alert('😏 Chupamela... 🤭')">😏 No Presionar</a>
+      </div>
+    </section>
+  </main>
+  <footer>Hecho con cariño por Christian · 2025</footer>
+
+<script>
+  // Generar MUCHOS girasoles cayendo
+  const contenedor = document.getElementById("flores");
+  const emoji = "🌻"; // solo girasoles
+  for(let i=0;i<60;i++){ // aún más cantidad
+    const span=document.createElement("span");
+    span.className="flor";
+    span.textContent=emoji;
+    span.style.left=Math.random()*100+"vw";
+    span.style.fontSize=(24+Math.random()*26)+"px"; // tamaños variados
+    span.style.animationDuration=(5+Math.random()*8)+"s";
+    span.style.animationDelay=Math.random()*5+"s";
+    contenedor.appendChild(span);
+  }
+</script>
+
+</body>
+</html>

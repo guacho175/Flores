@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🌼 Para Ti 🌼</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Sacramento', cursive;
+      background: linear-gradient(180deg, #fffbe6 0%, #fff9d6 100%);
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 70px 20px 40px;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      color: #f1c40f;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 2em;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .heart {
+      font-size: 3em;
+      animation: beat 1s infinite;
+      margin: 20px 0;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    .flower-wall {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px auto;
+      max-width: 1000px;
+    }
+
+    .flower {
+      width: 60px;
+      height: 60px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/32/Sunflower_icon.svg');
+      background-size: cover;
+      animation: sway 3s infinite ease-in-out;
+    }
+
+    @keyframes sway {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 1.1em;
+      color: #999;
+      text-align: center;
+    }
+
+    footer span {
+      color: #f1c40f;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5em; }
+      p { font-size: 1.4em; }
+      .flower { width: 40px; height: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌻 Para Ti, mi Primavera 🌻</h1>
+    <p>
+      Este 21 de septiembre quería darte algo especial...<br>
+      porque no hay flores suficientes que expresen lo que siento por ti.<br>
+      Pero con esta página te envío muchas, muchas 🌼🌼🌼
+    </p>
+
+    <div class="heart">❤️</div>
+
+    <p>
+      Gracias por ser mi sol, mi flor favorita,<br>
+      y por hacer que cada día florezca solo con tu sonrisa 🌸
+    </p>
+
+    <div class="flower-wall">
+      <!-- Muchas flores -->
+      <div class="flower"></div><div class="flower"></div><div class="flower"></div>
+      <div class="flower"></div><div class="flower"></div><div class="flower"></div>
+      <div class="flower"></div><div class="flower"></div><div class="flower"></div>
+      <div class="flower"></div><div class="flower"></div><div class="flower"></div>
+      <div class="flower"></div><div class="flower"></div><div class="flower"></div>
+    </div>
+  </div>
+
+  <footer>
+    Hecho con <span>💛</span> por tu informático que te ama 🌻
+  </footer>
+</body>
+</html>

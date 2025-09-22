@@ -42,25 +42,53 @@
     border-radius:24px; padding:2rem;
     box-shadow:var(--sombra); text-align:center;
   }
+
   h1{
-    font-family:"Great Vibes", cursive; font-size:3rem;
-    color:#332b00; margin:0;
+    font-family:"Great Vibes", cursive; font-size:3.5rem;
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size:200% auto;
+    animation: brillo 3s linear infinite;
+    margin:0;
   }
+  @keyframes brillo{
+    0%{background-position:0% center;}
+    50%{background-position:100% center;}
+    100%{background-position:0% center;}
+  }
+
   .sub{color:#6b5b00; margin-top:.5rem;}
-  .mensaje{margin:2rem 0; font-size:1.1rem; line-height:1.6;}
+  .mensaje{
+    margin:2rem 0; font-size:1.2rem; line-height:1.7;
+    min-height:150px; transition: opacity .6s ease;
+  }
+  .mensaje.oculto{opacity:0;}
   .firma{font-family:"Great Vibes", cursive; font-size:2rem; color:#4b3e00;}
 
   /* --- Botones --- */
-  .botones{margin-top:2rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;}
+  .botones{
+    margin-top:2rem; display:flex; flex-wrap:wrap; 
+    gap:1.5rem; justify-content:center;
+  }
   .boton{
-    padding:0.9rem 1.2rem; border-radius:999px;
+    padding:1rem 1.4rem; border-radius:999px;
     background:linear-gradient(135deg,var(--amarillo),var(--amarillo-2));
     color:#332b00; font-weight:700; text-decoration:none;
     box-shadow:0 6px 12px rgba(246,201,14,.35);
-    transition:transform .2s ease, box-shadow .2s ease;
+    transition:transform .25s ease, box-shadow .25s ease;
     cursor:pointer;
+    animation: flotando 3s ease-in-out infinite;
   }
-  .boton:hover{transform:translateY(-2px); box-shadow:0 12px 20px rgba(246,201,14,.45);}
+  .boton:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 12px 25px rgba(246,201,14,.5);
+  }
+  @keyframes flotando{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-5px); }
+  }
+
   footer{text-align:center; margin:2rem 0; color:#7d6f00; font-size:.9rem;}
 </style>
 </head>
@@ -70,23 +98,24 @@
 
   <main>
     <section class="tarjeta">
-      <h1>Flores Amarillas para ti mi amor</h1>
-      <div class="sub">Un detalle sencillo, pero de corazón 🌼</div>
-    <div class="mensaje">
-      <p>No siempre hay que decir mucho, a veces un gesto basta.</p>
-      <p>Estas flores amarillas son solo un detalle tranquilo, como un pequeño rayo de sol en tu día.</p>
-      <p>Que las disfrutes a tu manera.</p>
-      <p class="firma">Christian</p>
-    </div>
+      <h1>Flores Amarillas para ti, mi amor 🌻</h1>
+      <div class="sub">Un detalle sencillo, pero de corazón</div>
+
+      <div class="mensaje" id="mensaje">
+        <p>No siempre hay que decir mucho, a veces un gesto basta.</p>
+        <p>Estas flores amarillas son solo un detalle tranquilo, como un pequeño rayo de sol en tu día.</p>
+        <p>Que las disfrutes a tu manera.</p>
+        <p class="firma">Christian</p>
+      </div>
 
       <div class="botones">
-        <a class="boton" onclick="alert('🌼 Eres única, Ani 💛')">🌼 Para Ani</a>
-        <a class="boton" onclick="alert('🌻 Que tu día brille como estas flores ✨')">🌻 Brillo</a>
-        <a class="boton" onclick="alert('🌼 La vida es más bonita contigo')">🌼 Bonita</a>
-        <a class="boton" onclick="alert('🌻 Un abrazo lleno de cariño 💫')">🌻 Abrazo</a>
-        <a class="boton" onclick="alert('🌼 Siempre deseo lo mejor para ti')">🌼 Deseo</a>
-        <a class="boton" onclick="alert('🐶 Benito te manda saludos 😁')">🐶 Benito</a>
-        <a class="boton" onclick="alert('😏 Chupamela... 🤭')">😏 No Presionar</a>
+        <a class="boton" onclick="cambiarMensaje('🌼 Eres única, Ani 💛')">🌼 Para Ani</a>
+        <a class="boton" onclick="cambiarMensaje('🌻 Que tu día brille como estas flores ✨')">🌻 Brillo</a>
+        <a class="boton" onclick="cambiarMensaje('🌼 La vida es más bonita contigo 💕')">🌼 Bonita</a>
+        <a class="boton" onclick="cambiarMensaje('🌻 Un abrazo lleno de cariño 💫')">🌻 Abrazo</a>
+        <a class="boton" onclick="cambiarMensaje('🌼 Siempre deseo lo mejor para ti 🌞')">🌼 Deseo</a>
+        <a class="boton" onclick="cambiarMensaje('🐶 Benito te manda saludos 😁')">🐶 Benito</a>
+        <a class="boton" onclick="cambiarMensaje('😏 chupamela, Ups... te dije que no presionaras 🤭')">😏 No Presionar</a>
       </div>
     </section>
   </main>
@@ -95,18 +124,50 @@
 <script>
   // Generar MUCHOS girasoles cayendo
   const contenedor = document.getElementById("flores");
-  const emoji = "🌻"; // solo girasoles
-  for(let i=0;i<60;i++){ // aún más cantidad
+  const emoji = "🌻";
+  for(let i=0;i<80;i++){
     const span=document.createElement("span");
     span.className="flor";
     span.textContent=emoji;
     span.style.left=Math.random()*100+"vw";
-    span.style.fontSize=(24+Math.random()*26)+"px"; // tamaños variados
-    span.style.animationDuration=(5+Math.random()*8)+"s";
-    span.style.animationDelay=Math.random()*5+"s";
+    span.style.fontSize=(20+Math.random()*40)+"px";
+    span.style.animationDuration=(6+Math.random()*10)+"s";
+    span.style.animationDelay=Math.random()*8+"s";
     contenedor.appendChild(span);
   }
+
+  // Mensaje principal
+  const mensajePrincipal = `
+    <p>No siempre hay que decir mucho, a veces un gesto basta.</p>
+    <p>Estas flores amarillas son solo un detalle tranquilo, como un pequeño rayo de sol en tu día.</p>
+    <p>Que las disfrutes a tu manera.</p>
+    <p class="firma">Christian</p>
+  `;
+
+  // Cambiar mensaje con fade y volver al principal después de 5s
+  function cambiarMensaje(texto){
+    const msg=document.getElementById("mensaje");
+
+    // Animación fade-out
+    msg.classList.add("oculto");
+
+    setTimeout(()=>{
+      // Mostrar mensaje del botón
+      msg.innerHTML = `<p>${texto}</p><p class="firma">Christian</p>`;
+      msg.classList.remove("oculto");
+    },600);
+
+    // Volver al mensaje principal después de 5 segundos
+    setTimeout(()=>{
+      msg.classList.add("oculto");
+      setTimeout(()=>{
+        msg.innerHTML = mensajePrincipal;
+        msg.classList.remove("oculto");
+      },600);
+    },5600); // 600ms del fade inicial + 5000ms visibles
+  }
 </script>
+
 
 </body>
 </html>

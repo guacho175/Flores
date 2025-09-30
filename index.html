@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Flores Amarillas para Ani</title>
+<title>Flores Marchitas</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -23,10 +23,10 @@
 
   /* --- Flores cayendo --- */
   .flores{ position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
-  .flor{ position:absolute; top:-10%; font-size:24px; animation: caer linear infinite; }
+  .flor{ position:absolute; top:-10%; font-size:24px; animation: caer linear infinite; opacity:0.8; }
   @keyframes caer{
     0%{ transform:translateY(-10%) rotate(0deg); opacity:1; }
-    100%{ transform:translateY(110vh) rotate(360deg); opacity:0.7; }
+    100%{ transform:translateY(110vh) rotate(360deg); opacity:0.5; }
   }
 
   /* --- Tarjeta central --- */
@@ -38,130 +38,60 @@
 
   h1{
     font-family:"Great Vibes", cursive; font-size:3.5rem;
-    background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+    background: linear-gradient(90deg, #999, #666, #999);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-size:200% auto; animation: brillo 3s linear infinite; margin:0;
+    background-size:200% auto; animation: brillo 5s linear infinite; margin:0;
   }
   @keyframes brillo{ 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
 
-  .sub{color:#6b5b00; margin-top:.5rem;}
+  .sub{color:#555; margin-top:.5rem;}
   .mensaje{ margin:2rem 0; font-size:1.2rem; line-height:1.7; min-height:150px; transition: opacity .6s ease; }
-  .mensaje.oculto{opacity:0;}
-  .firma{font-family:"Great Vibes", cursive; font-size:2rem; color:#4b3e00;}
-
-  /* --- Botones --- */
-  .botones{ margin-top:2rem; display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; }
-  .boton{
-    padding:1rem 1.4rem; border-radius:999px;
-    background:linear-gradient(135deg,var(--amarillo),var(--amarillo-2));
-    color:#332b00; font-weight:700; text-decoration:none;
-    box-shadow:0 6px 12px rgba(246,201,14,.35);
-    transition:transform .25s ease, box-shadow .25s ease;
-    cursor:pointer; animation: flotando 3s ease-in-out infinite;
-  }
-  .boton:hover{ transform:translateY(-4px) scale(1.05); box-shadow:0 12px 25px rgba(246,201,14,.5); }
-  @keyframes flotando{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-5px) } }
 
   footer{text-align:center; margin:2rem 0; color:#7d6f00; font-size:.9rem;}
-  footer small{display:block; margin-top:.25rem; opacity:.9;}
 </style>
 </head>
 <body>
-  <!-- Flores cayendo -->
+  <!-- Flores marchitas cayendo -->
   <div class="flores" id="flores"></div>
 
   <main>
     <section class="tarjeta">
-      <h1>Flores Amarillas para ti, mi amor 🌻</h1>
-      <div class="sub">Un detalle sencillo, pero de corazón</div>
+      <h1>Flores Marchitas</h1>
+      <div class="sub">Lo que alguna vez brilló, hoy ya no está igual</div>
 
       <div class="mensaje" id="mensaje">
-        <p>No siempre hay que decir mucho, a veces un gesto basta.</p>
-        <p>Estas flores amarillas son solo un detalle tranquilo, como un pequeño rayo de sol en tu día.</p>
-        <p>Que las disfrutes a tu manera.</p>
-        <p class="firma">Christian</p>
-      </div>
-
-      <div class="botones">
-        <a class="boton" onclick="cambiarMensaje('🌼 Eres única, Ani 💛')">🌼 Para Ani</a>
-        <a class="boton" onclick="cambiarMensaje('🌻 Que tu día brille como estas flores ✨')">🌻 Brillo</a>
-        <a class="boton" onclick="cambiarMensaje('🌼 La vida es más bonita contigo 💕')">🌼 Bonita</a>
-        <a class="boton" onclick="cambiarMensaje('🌻 Un abrazo lleno de cariño 💫')">🌻 Abrazo</a>
-        <a class="boton" onclick="cambiarMensaje('🌼 Siempre deseo lo mejor para ti 🌞')">🌼 Deseo</a>
-        <a class="boton" onclick="cambiarMensaje('🐶 Benito te manda saludos 😁')">🐶 Benito</a>
-        <a class="boton" onclick="cambiarMensaje('😏 Ups... te dije que no presionaras 🤭')">😏 No Presionar</a>
+        <p>🥀 Estas flores se murieron…</p>
+        <p>El tiempo pasó, y con él se marchitaron.</p>
+        <p>Ahora solo queda el recuerdo de lo que fueron.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    Hecho con cariño por Christian · 2025
-    <small>Música: “There is Romance” y “Heartwarming” — Kevin MacLeod (incompetech.com), CC BY 3.0.</small>
+    Hecho por Christian · 2025
   </footer>
 
   <!-- Música: varias fuentes (fallback) -->
-  <audio id="musica" loop preload="auto">
-    <!-- Opción 1 -->
+  <audio id="musica" loop autoplay>
     <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/There%20is%20Romance.mp3" type="audio/mpeg">
-    <!-- Opción 2 -->
     <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Heartwarming.mp3" type="audio/mpeg">
-    <!-- Opción 3 (respaldo genérico) -->
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     Tu navegador no soporta el audio HTML5.
   </audio>
 
 <script>
-  // Generar MUCHOS girasoles cayendo
+  // Generar flores marchitas cayendo
   const contenedor = document.getElementById("flores");
-  const emoji = "🌻";
-  for(let i=0;i<80;i++){
+  const emojis = ["🥀","🌼","🍂"]; // flores marchitas, flores simples y hojas secas
+  for(let i=0;i<60;i++){
     const span=document.createElement("span");
     span.className="flor";
-    span.textContent=emoji;
+    span.textContent=emojis[Math.floor(Math.random()*emojis.length)];
     span.style.left=Math.random()*100+"vw";
-    span.style.fontSize=(20+Math.random()*40)+"px";
+    span.style.fontSize=(18+Math.random()*36)+"px";
     span.style.animationDuration=(6+Math.random()*10)+"s";
     span.style.animationDelay=Math.random()*8+"s";
     contenedor.appendChild(span);
-  }
-
-  // Mensaje principal (para restaurar)
-  const mensajePrincipal = `
-    <p>No siempre hay que decir mucho, a veces un gesto basta.</p>
-    <p>Estas flores amarillas son solo un detalle tranquilo, como un pequeño rayo de sol en tu día.</p>
-    <p>Que las disfrutes a tu manera.</p>
-    <p class="firma">Christian</p>
-  `;
-
-  // Iniciar música solo una vez, al primer clic
-  let musicaIniciada = false;
-  function iniciarMusica(){
-    if(!musicaIniciada){
-      const audio = document.getElementById("musica");
-      audio.play().catch(()=>{}); // por si el navegador necesita interacción
-      musicaIniciada = true;
-    }
-  }
-
-  // Cambiar mensaje con fade y volver al principal después de 5s
-  function cambiarMensaje(texto){
-    iniciarMusica(); // activa música al primer click
-
-    const msg=document.getElementById("mensaje");
-    msg.classList.add("oculto");
-
-    setTimeout(()=>{
-      msg.innerHTML = `<p>${texto}</p><p class="firma">Christian</p>`;
-      msg.classList.remove("oculto");
-    },600);
-
-    setTimeout(()=>{
-      msg.classList.add("oculto");
-      setTimeout(()=>{
-        msg.innerHTML = mensajePrincipal;
-        msg.classList.remove("oculto");
-      },600);
-    },5600);
   }
 </script>
 </body>

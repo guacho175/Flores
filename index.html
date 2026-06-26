@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sitio en construccion | Orbynex</title>
+  <style>
+    :root {
+      --panel: rgba(255, 255, 255, 0.9);
+      --text: #172033;
+      --muted: #536173;
+      --accent: #ff4f8b;
+      --accent-2: #00c2ff;
+      --accent-3: #7c3cff;
+      --accent-4: #ffcc00;
+      --line: rgba(255, 255, 255, 0.62);
+      --shadow: 0 24px 70px rgba(23, 32, 51, 0.24);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        linear-gradient(120deg, rgba(255, 79, 139, 0.92), rgba(0, 194, 255, 0.82), rgba(124, 60, 255, 0.9), rgba(255, 204, 0, 0.78)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.22) 0 2px, transparent 2px 18px);
+      background-size: 260% 260%, 100% 100%;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      animation: fondo-vivo 14s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent),
+        repeating-linear-gradient(90deg, transparent 0 70px, rgba(255,255,255,0.12) 70px 72px);
+      mix-blend-mode: soft-light;
+      animation: barrido 8s linear infinite;
+    }
+
+    @keyframes fondo-vivo {
+      0%, 100% { background-position: 0% 50%, 0 0; }
+      50% { background-position: 100% 50%, 0 0; }
+    }
+
+    @keyframes barrido {
+      from { transform: translateX(-18%); }
+      to { transform: translateX(18%); }
+    }
+
+    main {
+      position: relative;
+      width: min(100%, 620px);
+      padding: 44px 32px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      background:
+        linear-gradient(var(--panel), var(--panel)) padding-box,
+        conic-gradient(from 90deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent-4), var(--accent)) border-box;
+      text-align: center;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      animation: entrada 700ms ease-out both, flotar 5s ease-in-out 800ms infinite;
+    }
+
+    main::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255, 79, 139, 0.16), transparent 34%),
+        linear-gradient(315deg, rgba(0, 194, 255, 0.14), transparent 38%);
+    }
+
+    main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(115deg, transparent 0 35%, rgba(255,255,255,0.48) 45%, transparent 56% 100%);
+      transform: translateX(-120%);
+      animation: brillo-tarjeta 5s ease-in-out infinite;
+    }
+
+    @keyframes entrada {
+      from { opacity: 0; transform: translateY(18px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes brillo-tarjeta {
+      0%, 55% { transform: translateX(-120%); }
+      75%, 100% { transform: translateX(120%); }
+    }
+
+    .badge {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 79, 139, 0.35);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      line-height: 1;
+      background: linear-gradient(90deg, #172033, var(--accent-3), var(--accent), #172033);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: texto-vivo 6s linear infinite;
+    }
+
+    @keyframes texto-vivo {
+      to { background-position: 220% center; }
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      margin: 18px auto 0;
+      max-width: 38rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .firma {
+      position: relative;
+      z-index: 1;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(83, 97, 115, 0.18);
+      color: #334155;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .firma a {
+      color: #6d28d9;
+      text-decoration: none;
+      background: linear-gradient(90deg, #ff4f8b, #00a6d6, #7c3cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-bottom: 2px solid rgba(124, 60, 255, 0.28);
+      transition: border-color 180ms ease, filter 180ms ease;
+    }
+
+    .firma a:hover,
+    .firma a:focus {
+      border-color: rgba(255, 79, 139, 0.85);
+      filter: brightness(1.12);
+      outline: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="badge">Proximamente</div>
+    <h1>Este sitio esta en construccion</h1>
+    <p>Estamos preparando una nueva version con mas energia, color y una experiencia mas pulida. Vuelve pronto para ver el contenido actualizado.</p>
+    <div class="firma">
+      Firma digital:
+      <a href="https://orbynexdigital.cl/" target="_blank" rel="noopener noreferrer">orbynexdigital.cl</a>
+    </div>
+  </main>
+</body>
+</html>
